@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoLibreria.Dal
 {
-    class CoffeeDal
+    public class CoffeeDal
     {
         const int TAMPAGINA = 20;
         public static List<Coffee> ListarTodo(int pagina)
