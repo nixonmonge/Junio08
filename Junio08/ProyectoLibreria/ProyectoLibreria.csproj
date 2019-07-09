@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Dal\CoffeeDal.cs" />
+    <Compile Include="Dal\CoffeeTypeDal.cs" />
     <Compile Include="Db\Brand.cs" />
     <Compile Include="Db\Coffee.cs" />
     <Compile Include="Db\CoffeeType.cs" />
