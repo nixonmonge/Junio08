@@ -10,18 +10,22 @@
     <form id="form1" runat="server">
         <div>
             Categoria:
-            <asp:DropDownList ID="DropDownList1" runat="server" DataTextField="Name" DataValueField="CoffeeTypeId">
+            <asp:DropDownList ID="DropDownList1" runat="server" DataTextField="Name" DataValueField="CoffeeTypeId" AutoPostBack="True">
             </asp:DropDownList>
             <br />
             <br />
             <asp:GridView ID="GridView1" runat="server">
             </asp:GridView>
             <br />
+            
             <asp:Repeater ID="Repeater1" runat="server">
                 <ItemTemplate>
-                    <%#Eval("Pag") %>
+                    <li><a href ="<%#Eval("Url")%>"><%#Eval("Pag")%></a>
+                        </li>
+                   
                 </ItemTemplate>
             </asp:Repeater>
+                
             <br />
         </div>
     </form>
