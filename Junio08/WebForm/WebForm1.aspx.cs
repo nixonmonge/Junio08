@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebForm.Models;
 
 namespace WebForm
 {
@@ -18,6 +19,14 @@ namespace WebForm
 
             GridView1.DataSource = CoffeeDal.ListarTodo(1);
             GridView1.DataBind();
+
+            var paginas = new List<Pagina>();
+            for (int i = 1; i < 20; i++)
+            {
+                paginas.Add(new Pagina(i, "http://Localhost/" + i));
+            }
+            Repeater1.DataSource = paginas;
+            Repeater1.DataBind();
         }
     }
 }

@@ -15,14 +15,31 @@ namespace ProyectoLibreria.Dal
         {
             using (var grupo = new Model1())
             {
-                return grupo.Coffee.OrderBy(c=> c.Title).Skip((pagina-1)*TAMPAGINA).ToList(); // PAGINA 1 = (1-1)*20=0
+                return grupo.Coffee.OrderBy(c=> c.Title).Skip((pagina-1)*TAMPAGINA).Take(TAMPAGINA).ToList(); // PAGINA 1 = (1-1)*20=0
             }        
         }
         public static List<Coffee> ListarTipo(int tipo, int pagina)
         {
             using (var grupo = new Model1())
             {
-                return grupo.Coffee.Where(c => c.TypeId == tipo).OrderBy(c => c.Title).Skip((pagina - 1) * TAMPAGINA).ToList();
+                return grupo.Coffee.Where(c => c.TypeId == tipo).OrderBy(c => c.Title).Skip((pagina - 1) * TAMPAGINA).Take(TAMPAGINA).ToList();
+            }
+        }
+        public static int NumPagina(int tipo)
+        {
+            using (var grupo = new Model1())
+
+            {
+                if (tipo == 0)
+                {
+                    return (int)Math.Ceiling((double) grupo.Coffee.Count() /TAMPAGINA);
+                }
+                else
+                {
+                    int num=grupo.Coffee.Where(c => c.TypeId == tipo).Count();
+                    return (int)Math.Ceiling((double)num / TAMPAGINA);
+                }
+                
             }
         }
 
