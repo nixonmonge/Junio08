@@ -15,6 +15,7 @@ namespace WebForm
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try {
             if (IsPostBack == false)
             {
                 string pagT = Request.QueryString["pag"];
@@ -81,6 +82,10 @@ namespace WebForm
                 Repeater1.DataSource = paginas;
                 Repeater1.DataBind();
 
+            }
+            }catch(Exception ex)
+            {
+                Panel1.Visible = true;
             }
         }//fin page load
     }

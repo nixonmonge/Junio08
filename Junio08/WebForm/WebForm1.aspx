@@ -40,6 +40,8 @@
                 </ItemTemplate>
             </asp:Repeater>
                 </ul>
+            <asp:Panel ID="Panel1" runat="server" Visible="False">
+                Error Web Side No operativo</asp:Panel>
             <br />
         </div>
     </form>
