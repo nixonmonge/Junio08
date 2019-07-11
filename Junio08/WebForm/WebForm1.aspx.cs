@@ -1,4 +1,5 @@
 ﻿using ProyectoLibreria.Dal;
+using ProyectoLibreria.Servicio;
 using ProyectoLibreria.Db;
 using System;
 using System.Collections.Generic;
@@ -26,11 +27,7 @@ namespace WebForm
                     GridView1.DataSource = CoffeeDal.ListarTodo(1);
                     GridView1.DataBind();
 
-                    var paginas = new List<Pagina>();
-                    for (int i = 1; i < CoffeeDal.NumPagina(0); i++)
-                    {
-                        paginas.Add(new Pagina(i, "WebForm1.aspx?pag=" + i + "&filtro=0"));
-                    }
+                    var paginas = PaginaServicio.CrearPagina(1, CoffeeDal.NumPagina(0), 0, "WebForm1.aspx");
                     Repeater1.DataSource = paginas;
                     Repeater1.DataBind();
 
@@ -53,13 +50,9 @@ namespace WebForm
                         GridView1.DataSource = CoffeeDal.ListarTipo(filtro, pag);
                     }
                     GridView1.DataBind();
-                   
+
                     //cargar la paginacion usuando ese filtro
-                    var paginas = new List<Pagina>();
-                    for (int i = 1; i < CoffeeDal.NumPagina(filtro); i++)
-                    {
-                        paginas.Add(new Pagina(i, "WebForm1.aspx?pag=" + i + "&filtro=" + filtro));
-                    }
+                    var paginas = PaginaServicio.CrearPagina(pag, CoffeeDal.NumPagina(filtro), filtro, "WebForm1.aspx");
                     Repeater1.DataSource = paginas;
                     Repeater1.DataBind();
                 }
@@ -83,11 +76,8 @@ namespace WebForm
                 
                 GridView1.DataBind();
                 // 3 gernerar paginacion usando tipo de cafe
-                var paginas = new List<Pagina>();
-                for (int i = 1; i < CoffeeDal.NumPagina(tipoCafe); i++)
-                {
-                    paginas.Add(new Pagina(i, "WebForm1.aspx?pag=" + i+"&filtro="+tipoCafe));
-                }
+                var paginas = PaginaServicio.CrearPagina(1, CoffeeDal.NumPagina(tipoCafe), tipoCafe, "WebForm1.aspx");
+                
                 Repeater1.DataSource = paginas;
                 Repeater1.DataBind();
 

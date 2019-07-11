@@ -7,14 +7,14 @@ namespace WebForm.Models
 {
     public class Pagina
     {
-        public int Pag { set; get; }
+        public string Pag { set; get; }
         public string Url { set; get; }
 
         public Pagina()
         {
         }
 
-        public Pagina(int pag, string url)
+        public Pagina(string pag, string url)
         {
             Pag = pag;
             Url = url;
