@@ -1,0 +1,74 @@
+﻿@using ProyectoLibreria.Db
+@using WebForm.Models
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>#1</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+
+                <div class="card">
+                    <div class="card-header">
+                        Caffeé
+                    </div>
+                    <div class="card-body">
+
+
+
+                        <table class="table">
+                            <tbody>
+                                @foreach (Coffee fila in ViewBag.lista)
+                                {
+
+                                    <tr>
+                                        <td>@fila.CoffeeId</td>
+                                        <td>@fila.Title</td>
+                                        <td>@fila.Price</td>
+                                        <td><img src="@fila.Img" style="width:50px; height:50px;" /></td>
+                                    </tr>
+                                }
+  
+
+                            </tbody>
+                        </table>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                @foreach (Pagina fila in ViewBag.listaPagina)
+                                {
+                                    if (fila.Pag == ViewBag.pagina.ToString())
+                                    {
+                                <li class="page-item active"><a class="page-link" href="@fila.Url">@fila.Pag</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li class="page-item"><a class="page-link" href="@fila.Url">@fila.Pag</a></li>
+                                    }
+                                }
+                            </ul>
+                        </nav>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

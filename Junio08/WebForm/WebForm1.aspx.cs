@@ -18,9 +18,10 @@ namespace WebForm
             try {
             if (IsPostBack == false)
             {
-                string pagT = Request.QueryString["pag"];
-                string filtroT = Request.QueryString["filtro"];
-                if (pagT == null || pagT == "")
+                    string pagT = Request.QueryString["pag"];
+                    string filtroT = Request.QueryString["filtro"];
+                    string nombreT = Request.QueryString["nombre"];
+                    if (pagT == null || pagT == "")
                 {
                     DropDownList1.DataSource = CoffeeTypeDal.ListarTodo();
                     DropDownList1.DataBind();
@@ -28,7 +29,7 @@ namespace WebForm
                     GridView1.DataSource = CoffeeDal.ListarTodo(1);
                     GridView1.DataBind();
 
-                    var paginas = PaginaServicio.CrearPagina(1, CoffeeDal.NumPagina(0), 0, "WebForm1.aspx");
+                    var paginas = PaginaServicio.CrearPagina(1, CoffeeDal.NumPagina(0), 0,nombreT, "WebForm1.aspx");
                     Repeater1.DataSource = paginas;
                     Repeater1.DataBind();
 
@@ -53,7 +54,7 @@ namespace WebForm
                     GridView1.DataBind();
 
                     //cargar la paginacion usuando ese filtro
-                    var paginas = PaginaServicio.CrearPagina(pag, CoffeeDal.NumPagina(filtro), filtro, "WebForm1.aspx");
+                    var paginas = PaginaServicio.CrearPagina(pag, CoffeeDal.NumPagina(filtro), filtro, nombreT, "WebForm1.aspx");
                     Repeater1.DataSource = paginas;
                     Repeater1.DataBind();
                 }
@@ -77,7 +78,7 @@ namespace WebForm
                 
                 GridView1.DataBind();
                 // 3 gernerar paginacion usando tipo de cafe
-                var paginas = PaginaServicio.CrearPagina(1, CoffeeDal.NumPagina(tipoCafe), tipoCafe, "WebForm1.aspx");
+                var paginas = PaginaServicio.CrearPagina(1, CoffeeDal.NumPagina(tipoCafe), tipoCafe,TextBox2.Text, "WebForm1.aspx");
                 
                 Repeater1.DataSource = paginas;
                 Repeater1.DataBind();
